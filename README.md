@@ -43,7 +43,7 @@ When running ST4 on 64bit Windows, it prefers ...
 4. `st4_py38_windows_x64` over `st4_py38_windows`
 
 
-> **Warning**
+> [!WARNING]
 >
 > Package Control downloads the whole repository including all folders
 > and drops all but the required variant when installing the library.
@@ -53,4 +53,3 @@ When running ST4 on 64bit Windows, it prefers ...
 >
 > **It is therefore recommended to ship libraries as platform specific
 > python wheels using asset based releases, instead.**
->
