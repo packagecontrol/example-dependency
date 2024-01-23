@@ -3,6 +3,8 @@
 Legacy libraries (former "dependencies") bundle python packages,
 so they can be re-used by Sublime Text packages.
 
+## Folder Structure
+
 Platform specific variants are organized in sub folders.
 
 | folder                  | description
@@ -32,7 +34,7 @@ When running Sublime Text 3,
 When running Sublime Text 4,
 
 - all folders beginning with `st4` are prefered, if present.
-- `st3` is installed for python 3.3 and 3.8
+- `all` and `st3` are installed for python 3.3 and 3.8
 - `st3_{os}` and `st3_{os}_{arch}` are considdered containing binaries and thus are installed for python 3.3, only.
 
 When running ST4 on 64bit Windows, it prefers ...
@@ -41,6 +43,36 @@ When running ST4 on 64bit Windows, it prefers ...
 2. `st4_py38` over `st4`
 3. `st4_py38_windows` over `st4_py38`
 4. `st4_py38_windows_x64` over `st4_py38_windows`
+
+## Registration
+
+Dependencies must opt-in to python 3.8 via repository.
+
+```json
+{
+  "$schema": "sublime://packagecontrol.io/schemas/repository",
+  "schema_version": "4.0.0",
+  "libraries": [
+    {
+       "name": "example-dependency",
+       "author": "packagecontrol",
+       "issues": "https://github.com/packagecontrol/example-dependency/issues"
+       "releases":[
+           {
+               "base": "https://github.com/packagecontrol/example-dependency"
+               "python_versions": ["3.3", "3.8"]
+           }
+       ]
+    }
+  ]
+}
+```
+
+> [!NOTE]
+>
+> JSON repository scheme 4.0.0 is required to specify `"python_versions": []`.
+> 
+> packagecontrol.io supports up to scheme 3.0.0 only!
 
 
 > [!WARNING]
@@ -53,3 +85,4 @@ When running ST4 on 64bit Windows, it prefers ...
 >
 > **It is therefore recommended to ship libraries as platform specific
 > python wheels using asset based releases, instead.**
+
